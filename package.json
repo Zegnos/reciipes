@@ -1,0 +1,38 @@
+{
+  "name": "reciipes",
+  "author": "Zegnos",
+  "description": "Une bibliothèque de recettes simple",
+  "private": true,
+  "license": "MIT",
+  "version": "2.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zegnos/reciipes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zegnos/reciipes/issues"
+  },
+  "homepage": "https://github.com/Zegnos/reciipes#readme",
+  "keywords": [
+    "recipes",
+    "cooking",
+    "reciipes"
+  ],
+  "workspaces": [
+    "api",
+    "frontend"
+  ],
+  "scripts": {
+    "install:all": "npm ci --workspaces",
+    "build:all": "npm --workspace frontend run build",
+    "start:docker": "make up",
+    "dev": "concurrently \"npm run dev --workspace api\" \"npm run dev --workspace frontend\"",
+    "start": "node start.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
