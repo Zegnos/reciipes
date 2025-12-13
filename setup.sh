@@ -130,6 +130,7 @@ wait_for_http() {
   while true; do
     if curl -s -I "$url" >/dev/null 2>&1; then
       echo "$url is reachable"
+      echo "Please wait, initialization in progress..."
       return 0
     fi
     sleep 2

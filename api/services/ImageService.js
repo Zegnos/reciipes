@@ -27,8 +27,13 @@ class ImageService {
         originalPath,
         path.extname(originalPath)
       );
-      const webpFilename = `${originalName}.webp`;
-      const webpPath = path.join(this.uploadsDir, webpFilename);
+      let webpFilename = `${originalName}.webp`;
+      let webpPath = path.join(this.uploadsDir, webpFilename);
+      if (path.resolve(webpPath) === path.resolve(originalPath)) {
+        webpFilename = `${originalName}-converted-${Date.now()}.webp`;
+        webpPath = path.join(this.uploadsDir, webpFilename);
+        console.log(`Output path collisions avoided, using ${webpFilename}`);
+      }
       const metadata = await sharp(originalPath).metadata();
       console.log(`Conversion en WebP: ${originalName}`);
       console.log(`   Format original: ${metadata.format}`);
@@ -49,7 +54,14 @@ class ImageService {
       console.log(`   Taille WebP: ${(webpStats.size / 1024).toFixed(1)} KB`);
       console.log(`   Compression: ${compressionRatio}%`);
       if (deleteOriginal) {
-        fs.unlinkSync(originalPath);
+        try {
+          fs.unlinkSync(originalPath);
+        } catch (unlinkErr) {
+          console.error(
+            "Erreur lors de la suppression de l'original:",
+            unlinkErr
+          );
+        }
         console.log(
           `Image originale supprimée: ${path.basename(originalPath)}`
         );
@@ -73,8 +85,17 @@ class ImageService {
         originalPath,
         path.extname(originalPath)
       );
-      const optimizedFilename = `${originalName}.webp`;
-      const optimizedPath = path.join(this.uploadsDir, optimizedFilename);
+      let optimizedFilename = `${originalName}.webp`;
+      let optimizedPath = path.join(this.uploadsDir, optimizedFilename);
+      // Avoid writing optimized file to the same path as the original
+      // (happens when original is already .webp). Use a unique name.
+      if (path.resolve(optimizedPath) === path.resolve(originalPath)) {
+        optimizedFilename = `${originalName}-optimized-${Date.now()}.webp`;
+        optimizedPath = path.join(this.uploadsDir, optimizedFilename);
+        console.log(
+          `Avoiding overwrite of original webp, using ${optimizedFilename}`
+        );
+      }
       const metadata = await sharp(originalPath).metadata();
       console.log(`Optimisation d'image: ${originalName}`);
       console.log(
@@ -104,8 +125,15 @@ class ImageService {
       );
       console.log(`   Compression: ${compressionRatio}%`);
       if (deleteOriginal) {
-        fs.unlinkSync(originalPath);
-        console.log(`Image originale supprimée`);
+        try {
+          fs.unlinkSync(originalPath);
+          console.log(`Image originale supprimée`);
+        } catch (unlinkErr) {
+          console.error(
+            "Erreur lors de la suppression de l'original:",
+            unlinkErr
+          );
+        }
       }
       return optimizedFilename;
     } catch (error) {
