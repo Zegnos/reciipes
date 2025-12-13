@@ -16,6 +16,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
   single:
     build:
       context: .
@@ -23,8 +24,8 @@ services:
     restart: unless-stopped
     ports:
       - "3014:2029"
-    environment:
-      NODE_ENV: production
+    env_file:
+      - ./api/.env
     volumes:
       - ./uploads:/app/uploads
     depends_on:
