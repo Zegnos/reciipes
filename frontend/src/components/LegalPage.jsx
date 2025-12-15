@@ -7,7 +7,7 @@ const LegalPage = () => {
       <div className="legal-container">
         <div className="legal-header">
           <h1>Mentions légales & Confidentialité</h1>
-          <p>Dernière mise à jour : Décembre 2025</p>
+          <p>Dernière mise à jour : 15 Décembre 2025</p>
         </div>
 
         <div className="legal-content">
@@ -142,11 +142,6 @@ const LegalPage = () => {
               <li>Protection contre les injections SQL et XSS</li>
               <li>Sauvegarde régulière des données</li>
             </ul>
-            <p>
-              Toutefois, aucune méthode de transmission ou de stockage
-              électronique n'est totalement sécurisée. Nous ne pouvons garantir
-              une sécurité absolue.
-            </p>
           </section>
 
           <section className="legal-section">
@@ -334,6 +329,12 @@ const LegalPage = () => {
 
           <section className="legal-section">
             <h3>17. Contact</h3>
+            <p>
+              Nous nous réservons le droit d'envoyer un courriel à l'ensemble
+              des utilisateurs en cas de modification importante des présentes
+              conditions ou pour toute raison majeure relative à l'application.
+            </p>
+            <br />
             <p>
               Pour toute question concernant ces conditions d'utilisation, vos
               données personnelles, ou pour exercer vos droits RGPD, vous pouvez
