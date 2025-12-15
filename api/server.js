@@ -23,6 +23,11 @@ const __dirname = path.dirname(__filename);
 
 dotenv.config();
 const QUIET_MODE = true;
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
+const COOKIE_SECURE = IS_PRODUCTION
+  ? process.env.COOKIE_SECURE !== "false"
+  : false;
+const COOKIE_SAMESITE = IS_PRODUCTION && COOKIE_SECURE ? "none" : "lax";
 
 const app = express();
 const PORT = process.env.PORT || 2029;
@@ -182,6 +187,14 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+if (IS_PRODUCTION && !COOKIE_SECURE) {
+  logAligned(
+    "warning",
+    "session cookie config",
+    "SameSite=None without Secure cookie detected; falling back to Lax"
+  );
+}
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "votre-secret-super-securise",
@@ -189,14 +202,11 @@ app.use(
     saveUninitialized: true,
     name: "reciipes.sid",
     cookie: {
-      secure:
-        process.env.NODE_ENV === "production"
-          ? process.env.COOKIE_SECURE !== "false"
-          : false,
+      secure: COOKIE_SECURE,
       maxAge: 24 * 60 * 60 * 1000,
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      sameSite: COOKIE_SAMESITE,
       httpOnly: true, // Sécurité XSS
-      domain: process.env.NODE_ENV === "production" ? undefined : undefined,
+      domain: IS_PRODUCTION ? undefined : undefined,
     },
   })
 );
@@ -288,8 +298,23 @@ app.get("/auth/google/callback", (req, res, next) => {
 
   passport.authenticate("google", (err, user, info) => {
     if (err) {
-      logAligned("error", "authentication error", `Error: ${err.message}`);
-      return res.status(500).send(`Erreur d'authentification: ${err.message}`);
+      let clientMessage = err.message;
+      if (err.oauthError?.data) {
+        try {
+          const oauthDetails = JSON.parse(err.oauthError.data);
+          logAligned("error", "google oauth error", oauthDetails);
+          if (oauthDetails.error_description) {
+            clientMessage = oauthDetails.error_description;
+          }
+        } catch (parseError) {
+          logAligned("error", "google oauth error", err.oauthError.data);
+        }
+      }
+
+      logAligned("error", "authentication error", `Error: ${clientMessage}`);
+      return res
+        .status(500)
+        .send(`Erreur d'authentification: ${clientMessage}`);
     }
     if (!user) {
       logAligned(
@@ -399,6 +424,17 @@ app.get("/api/user", (req, res) => {
 app.use("/api/subrecipes", subrecipesRouter);
 
 // Routes de partage de recettes
+
+// GET /share/:token - Afficher la page publique (SPA)
+app.get("/share/:token", (req, res, next) => {
+  const indexPath = path.join(__dirname, "dist", "index.html");
+
+  if (!fs.existsSync(indexPath)) {
+    return next();
+  }
+
+  return res.sendFile(indexPath);
+});
 
 // POST /api/recipes/:id/share - Créer un lien de partage
 app.post("/api/recipes/:id/share", ensureAuthenticated, async (req, res) => {

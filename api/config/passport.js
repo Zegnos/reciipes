@@ -1,19 +1,34 @@
+import dotenv from "dotenv";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import UserModel from "../database/models/UserModel.js";
+
+dotenv.config();
+
+const missingGoogleConfig = [];
+if (!process.env.GOOGLE_CLIENT_ID) missingGoogleConfig.push("GOOGLE_CLIENT_ID");
+if (!process.env.GOOGLE_CLIENT_SECRET)
+  missingGoogleConfig.push("GOOGLE_CLIENT_SECRET");
+
+if (missingGoogleConfig.length > 0) {
+  throw new Error(
+    `Configuration Google OAuth manquante: ${missingGoogleConfig.join(", ")}`
+  );
+}
+
+const resolveCallbackURL = () => {
+  const configured = process.env.GOOGLE_CALLBACK_URL?.trim();
+  if (configured) return configured;
+  return "/auth/google/callback";
+};
 
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL:
-        process.env.GOOGLE_CALLBACK_URL ||
-        (process.env.NODE_ENV === "production"
-          ? (process.env.PROD_URL || "https://reciipes.fr") +
-            "/auth/google/callback"
-          : (process.env.DEV_URL || "http://localhost:2029") +
-            "/auth/google/callback"),
+      callbackURL: resolveCallbackURL(),
+      proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
