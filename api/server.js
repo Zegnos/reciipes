@@ -146,9 +146,9 @@ app.use(
   cors({
     origin:
       process.env.NODE_ENV === "production"
-        ? ["https://reciipes.fr", "https://www.reciipe.fr"]
-        : true, // En développement, permet toutes les origines
-    credentials: true, // Permet l'envoi de cookies
+        ? ["https://reciipes.fr", "https://www.reciipes.fr"]
+        : true,
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
   })
