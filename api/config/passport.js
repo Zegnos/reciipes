@@ -16,10 +16,41 @@ if (missingGoogleConfig.length > 0) {
   );
 }
 
+const DEFAULT_BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://reciipes.fr"
+    : "http://localhost:2029";
+
+const getServerBaseUrl = () => {
+  const candidates = [
+    process.env.SERVER_URL,
+    process.env.API_BASE_URL,
+    process.env.API_URL,
+    process.env.BACKEND_URL,
+    process.env.NODE_ENV === "production" ? process.env.PROD_URL : null,
+  ].filter((value) => !!value);
+
+  const chosen = candidates[0] || DEFAULT_BASE_URL;
+  return chosen.replace(/\/+$/, "");
+};
+
+const absolutizeCallback = (value) => {
+  if (!value) return null;
+
+  const trimmed = value.trim();
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  const base = getServerBaseUrl();
+  const normalizedPath = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  return `${base}${normalizedPath}`;
+};
+
 const resolveCallbackURL = () => {
-  const configured = process.env.GOOGLE_CALLBACK_URL?.trim();
+  const configured = absolutizeCallback(process.env.GOOGLE_CALLBACK_URL);
   if (configured) return configured;
-  return "/auth/google/callback";
+  return `${getServerBaseUrl()}/auth/google/callback`;
 };
 
 passport.use(
