@@ -14,6 +14,29 @@
   padding: 4rem 0 2.5rem;
 }
 
+.home-header .container {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+.home-header-content {
+  flex: 1 1 auto;
+  max-width: 640px;
+}
+
+.home-header .logo {
+  flex: 0 0 auto;
+}
+
+.home-header .logo img {
+  width: 270px;
+  height: auto;
+  display: block;
+  max-width: 40vw;
+  margin-top: -8px;
+}
+
 .home-tag {
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -63,7 +86,7 @@
 .home-link:hover {
   border-bottom-color: #f2f2f2;
 }
-
+/* logo img sizing handled by .home-header .logo img */
 /* GitHub icon sizing + spacing */
 .home-link svg {
   width: 1.05rem;
@@ -208,6 +231,15 @@
     padding-top: 3.5rem;
   }
 
+  .home-header .container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .home-header .logo img {
+    width: 180px;
+  }
+
   .home-title {
     font-size: 2.6rem;
   }
@@ -225,6 +257,10 @@
 @media (max-width: 480px) {
   .home-title {
     font-size: 2.2rem;
+  }
+
+  .home-header .logo img {
+    width: 140px;
   }
 
   .maker-card pre {

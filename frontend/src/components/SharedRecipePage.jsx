@@ -212,6 +212,11 @@ const SharedRecipePage = ({ shareToken }) => {
       {/* Header avec branding */}
       <div className="shared-header">
         <div className="brand">
+          <img
+            src="/Logo_reciipes_nobg.png"
+            alt="Reciipes"
+            className="brand-logo"
+          />
           <h1>Reciipes</h1>
         </div>
         {user ? (

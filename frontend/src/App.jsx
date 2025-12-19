@@ -163,7 +163,6 @@ function App() {
   // Gérer le scroll du body quand une recette est ouverte
   useEffect(() => {
     if (selectedRecipe) {
-
       document.body.classList.add("modal-open");
     } else {
       document.body.classList.remove("modal-open");
@@ -220,7 +219,6 @@ function App() {
     try {
       let savedRecipe;
       if (editingRecipe) {
-
         savedRecipe = await recipeService.updateRecipe(
           editingRecipe.id,
           recipeData
@@ -229,7 +227,6 @@ function App() {
           prev.map((r) => (r.id === editingRecipe.id ? savedRecipe : r))
         );
       } else {
-
         savedRecipe = await recipeService.addRecipe(recipeData);
         setRecipes((prev) => [...prev, savedRecipe]);
       }
@@ -302,7 +299,14 @@ function App() {
     return (
       <div className="app">
         <div className="app-header">
-          <h1>Reciipes</h1>
+          <div className="app-brand">
+            <img
+              src="/Logo_reciipes_nobg.png"
+              alt="Reciipes"
+              className="app-logo"
+            />
+            <h1>Reciipes</h1>
+          </div>
           <UserProfile user={user} onLogout={handleLogout} />
         </div>
         <NavBar />
@@ -316,9 +320,15 @@ function App() {
 
     return (
       <div className="app">
-
         <div className="app-header">
-          <h1>Reciipes</h1>
+          <div className="app-brand">
+            <img
+              src="/Logo_reciipes_nobg.png"
+              alt="Reciipes"
+              className="app-logo"
+            />
+            <h1>Reciipes</h1>
+          </div>
           <UserProfile user={user} onLogout={handleLogout} />
         </div>
         <NavBar />
@@ -431,7 +441,14 @@ function App() {
   return (
     <div className="app">
       <div className="app-header">
-        <h1>Reciipes</h1>
+        <div className="app-brand">
+          <img
+            src="/Logo_reciipes_nobg.png"
+            alt="Reciipes"
+            className="app-logo"
+          />
+          <h1>Reciipes</h1>
+        </div>
         <UserProfile user={user} onLogout={handleLogout} />
       </div>
       <NavBar />
