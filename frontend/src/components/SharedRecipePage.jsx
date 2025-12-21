@@ -284,7 +284,7 @@ const SharedRecipePage = ({ shareToken }) => {
           <div className="servings-controls">
             <button
               onClick={() => setServings(Math.max(1, servings - 1))}
-              className="btn btn-secondary"
+              className="btn-add btn"
             >
               -
             </button>
@@ -293,7 +293,7 @@ const SharedRecipePage = ({ shareToken }) => {
             </span>
             <button
               onClick={() => setServings(servings + 1)}
-              className="btn btn-secondary"
+              className="btn-add btn"
             >
               +
             </button>
@@ -381,7 +381,7 @@ const SharedRecipePage = ({ shareToken }) => {
       {/* Actions principales */}
       <div className="shared-actions">
         <button className="btn btn-secondary" onClick={handleDownloadPDF}>
-          �️ Imprimer / PDF
+          Imprimer / PDF
         </button>
 
         <button
@@ -389,18 +389,12 @@ const SharedRecipePage = ({ shareToken }) => {
           onClick={handleAddToCollection}
           disabled={adding}
         >
-          {adding ? "⏳ Ajout..." : "💾 Ajouter à ma collection"}
+          {adding ? "Ajout..." : "Ajouter à ma collection"}
         </button>
       </div>
       {/* Footer */}
       <div className="shared-footer">
-        <p>📝 Mes Recettes - Application de gestion de recettes</p>
-        <button
-          className="btn btn-primary"
-          onClick={() => (window.location.href = "/")}
-        >
-          🚀 Créer votre propre collection
-        </button>
+        <p>Mes Recettes - Application de gestion de recettes</p>
       </div>
 
       {/* Galerie d'images de notes */}

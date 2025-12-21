@@ -713,8 +713,8 @@ const RecipeForm = ({
                 />
                 <label
                   htmlFor="image-upload"
-                  className="upload-label"
-                  style={{ color: "#F2F2F2" }}
+                  className="btn-add btn"
+                  style={{ color: "#F2F2F2", width: "21%" }}
                 >
                   {imageFile ? "Changer l'image" : "Ajouter une image"}
                 </label>
@@ -1160,11 +1160,11 @@ const RecipeForm = ({
             <button
               type="button"
               onClick={onCancel}
-              className="btn btn-secondary"
+              className="btn-add btn"
             >
               Annuler
             </button>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn-add btn">
               {recipe ? "Sauvegarder" : "Créer la recette"}
             </button>
           </div>

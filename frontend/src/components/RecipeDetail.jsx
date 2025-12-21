@@ -245,17 +245,17 @@ const RecipeDetail = ({ recipe, onClose, onEdit, onDelete }) => {
 
         {/* Actions */}
         <div className="recipe-detail-actions">
-          <button className="btn btn-secondary" onClick={() => onEdit(recipe)}>
+          <button className="btn-hover btn" onClick={() => onEdit(recipe)}>
             Modifier
           </button>
           <button
-            className="btn btn-secondary"
+            className="btn-hover btn"
             onClick={handleShare}
             disabled={sharing}
           >
             {sharing ? "Création..." : "Partager"}
           </button>
-          <button className="btn btn-secondary" onClick={handleDownloadPDF}>
+          <button className="btn-hover btn" onClick={handleDownloadPDF}>
             PDF
           </button>
           <button
@@ -338,7 +338,7 @@ const RecipeDetail = ({ recipe, onClose, onEdit, onDelete }) => {
                 setBaseValue(newValue);
                 setInputValue(newValue.toString());
               }}
-              className="btn btn-secondary"
+              className="btn-add btn"
             >
               -
             </button>
@@ -381,7 +381,7 @@ const RecipeDetail = ({ recipe, onClose, onEdit, onDelete }) => {
                 setBaseValue(newValue);
                 setInputValue(newValue.toString());
               }}
-              className="btn btn-secondary"
+              className="btn-add btn"
             >
               +
             </button>

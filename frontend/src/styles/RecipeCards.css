@@ -39,6 +39,7 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  background: #305461;
 }
 
 .recipe-card-title {
@@ -69,7 +70,7 @@
 }
 
 .recipe-tag {
-  background: #16313e;
+  background: #466571;
   color: #f2f2f2;
   padding: 0.2rem 0.5rem;
   border-radius: 12px;
@@ -91,7 +92,7 @@
   gap: 0.3rem;
   color: #f2f2f2;
   font-size: 0.85rem;
-  background-color: #16313e;
+  background-color: #466571;
   padding: 0.2rem 0.5rem;
   border-radius: 40px;
 }

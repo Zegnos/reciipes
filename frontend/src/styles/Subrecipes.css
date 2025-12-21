@@ -236,13 +236,13 @@
 }
 
 .btn-primary:hover {
-  background: #335c67;
+  background: #376470;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(79, 109, 122, 0.35);
 }
 
 .btn-secondary {
-  background: #376470;
+  background: #466571;
   color: #f2f2f2;
   box-shadow: 0 2px 8px rgba(47, 86, 97, 0.2);
 }

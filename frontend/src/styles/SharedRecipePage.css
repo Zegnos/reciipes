@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 1.2rem 2rem;
-  background: #3d6c79;
+  background: #305461;
   box-shadow: 0 2px 10px rgba(19, 81, 139, 0.1);
   border-bottom: 2px solid #335c67;
 }
@@ -105,7 +105,7 @@
   gap: 2rem;
   margin-bottom: 3rem;
   padding: 2rem;
-  background: #89adcfe6;
+  background: #305461;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(19, 81, 139, 0.1);
 }
@@ -171,11 +171,11 @@
 }
 
 .badge-category {
-  background: #2d5763;
+  background: #466571;
 }
 
 .badge-type {
-  background: #527e91;
+  background: #466571;
 }
 
 .recipe-rating {
@@ -196,7 +196,7 @@
   gap: 1rem;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: #335c67;
+  background: #305461;
   border-radius: 15px;
   box-shadow: 0 2px 10px rgba(19, 71, 139, 0.1);
 }
@@ -204,7 +204,7 @@
 .time-info {
   text-align: center;
   padding: 1rem;
-  background: #5e7f8d;
+  background: #466571;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(19, 85, 139, 0.05);
 }
@@ -271,7 +271,7 @@
 .recipe-section {
   margin-bottom: 3rem;
   padding: 2rem;
-  background: #5e7f8d;
+  background: #305461;
   border-radius: 15px;
   box-shadow: 0 2px 10px rgba(21, 67, 128, 0.1);
 }
@@ -327,7 +327,7 @@
 }
 
 .step-number {
-  background: #335c67;
+  background: #466571;
   color: #f2f2f2;
   width: 40px;
   height: 40px;
@@ -346,12 +346,11 @@
   line-height: 1.6;
   color: #f2f2f2;
   font-size: 1rem;
-  background: #5c7883;
+  background: #466571;
   border-radius: 10px;
   min-height: 80px;
   max-height: 120px;
   overflow-y: auto;
-  border: 1px solid rgba(96, 152, 184, 0.3);
   word-wrap: break-word;
   hyphens: auto;
   width: 100%;
@@ -364,7 +363,7 @@
 }
 
 .tag {
-  background: #335c67;
+  background: #466571;
   color: #f2f2f2;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -386,7 +385,7 @@
 .shared-footer {
   text-align: center;
   padding: 3rem 2rem;
-  background: #5e7f8d;
+  background: #305461;
   margin-top: 2rem;
 }
 
@@ -491,7 +490,7 @@
 }
 
 .btn-primary:hover {
-  background: #324d55;
+  background: #376470;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(7, 57, 116, 0.2);
 }

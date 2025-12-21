@@ -5,7 +5,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #335c67 0%, #041625 100%);
+  background: linear-gradient(135deg, #335c67, #4f6d7a);
   color: #23303e;
   font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
   min-height: 100vh;
@@ -38,7 +38,7 @@ input[type="number"] {
   align-items: center;
   margin-bottom: 3rem;
   padding: 1.5rem 2rem;
-  background: #4f6d7a;
+  background: #305461;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(9, 27, 36, 0.37);
 }
@@ -115,7 +115,7 @@ input[type="number"] {
 }
 
 .btn-secondary {
-  background: #376470;
+  background: #466571;
   color: #f2f2f2;
   border: 2px solid rgba(140, 188, 210, 0.3);
 }
@@ -123,7 +123,13 @@ input[type="number"] {
 .btn-secondary:hover {
   background: #335c67;
 }
-
+.btn-hover {
+  background: #466571;
+  color: #fff;
+}
+.btn-hover:hover {
+  background: #577685;
+}
 .btn-danger {
   background: #e57373;
   color: #f2f2f2;
@@ -132,16 +138,23 @@ input[type="number"] {
 .btn-danger:hover {
   background: #f44336;
 }
+.btn-add {
+  background: #466571;
+}
+.btn-add:hover {
+  background: #577685;
+  color: #fff;
+}
 
 .btn-new-recipe {
-  background: #244652;
+  background: #466571;
   color: #f7fbff;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 14px 32px rgba(31, 76, 94, 0.45);
 }
 
 .btn-new-recipe:hover {
-  background: #2c5361;
+  background: #577685;
   color: #ffffff;
   box-shadow: 0 14px 32px rgba(26, 66, 82, 0.45);
 }
@@ -249,7 +262,7 @@ input[type="number"] {
 }
 
 .search-filters-container {
-  background: #4f6d7a;
+  background: #305461;
   padding: 2rem;
   border-radius: 15px;
   margin-bottom: 2rem;

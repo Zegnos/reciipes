@@ -4,7 +4,7 @@
   align-items: center;
   margin-bottom: 3rem;
   padding: 1.5rem 2rem;
-  background: #4f6d7a;
+  background: #305461;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(63, 78, 97, 0.37);
 }
@@ -21,7 +21,7 @@ nav.main-nav {
   gap: 12px;
   align-items: center;
   padding: 12px 24px;
-  background: rgba(79, 109, 122, 0.3);
+  background-color: #305461;
   border-radius: 16px;
   margin-bottom: 24px;
 }

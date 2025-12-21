@@ -1,7 +1,7 @@
-#355c67 → structure (Background)
+#355c67 → bleu structure (Background)
 
-#f2f2f2 → contenu (Texte...)
+#f2f2f2 → blanc contenu (Texte...)
 
-#618594 → zones lisibles (Cards, boxs,...)
+#618594 → bleu clair zones lisibles (Cards, boxs,...)
 
-#16313e → actions (Boutons, Actions, Nav...)
+#16313e → bleu foncé actions (Boutons, Actions, Nav...)
