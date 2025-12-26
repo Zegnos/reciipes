@@ -236,11 +236,7 @@ const SharedRecipePage = ({ shareToken }) => {
         {/* En-tête de la recette */}
         <div className="recipe-header">
           <div className="recipe-image">
-            {recipe.image ? (
-              <img src={recipe.image} alt={recipe.name} />
-            ) : (
-              <div className="placeholder-image">Illustration</div>
-            )}
+            <img src={recipe.image || "/miam.webp"} alt={recipe.name} />
           </div>
 
           <div className="recipe-info">

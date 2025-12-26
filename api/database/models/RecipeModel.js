@@ -186,7 +186,7 @@ class RecipeModel {
         INSERT INTO recipes (name, description, image, category, type, 
                            cooking_time, prep_time, rest_time, chill_time, freeze_time, 
                            servings, base_value, base_unit, rating, visibility, notes, user_id)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `,
         [
           recipeData.name,

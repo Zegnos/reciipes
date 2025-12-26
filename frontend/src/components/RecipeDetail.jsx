@@ -57,7 +57,6 @@ const RecipeDetail = ({ recipe, onClose, onEdit, onDelete }) => {
           <span className="rating-placeholder">Nouveau</span>
         ) : (
           <>
-            
             {votes ? (
               <span className="rating-votes">({votes} avis)</span>
             ) : null}
@@ -223,11 +222,7 @@ const RecipeDetail = ({ recipe, onClose, onEdit, onDelete }) => {
           </button>
 
           <div className="recipe-detail-image">
-            {recipe.image ? (
-              <img src={recipe.image} alt={recipe.name} />
-            ) : (
-              <div className="placeholder-image">Illustration</div>
-            )}
+            <img src={recipe.image || "/miam.webp"} alt={recipe.name} />
           </div>
 
           <div className="recipe-detail-title-section">
